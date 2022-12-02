@@ -1,0 +1,30 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# S3easy
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Add new S3 functions and add methods quickly in the style of [usethis](https://usethis.r-lib.org/index.html).
+
+## Installation
+
+You can install the development version of S3easy like so:
+
+```{r, eval = FALSE}
+devtools::install_github("valentingar/S3easy")
+```
+
