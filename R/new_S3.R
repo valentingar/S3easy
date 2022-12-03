@@ -88,7 +88,7 @@ generate_S3header <- function(S3_name,
   header_text <- paste0(
     "#' ", S3_name, "\n#'\n",
     "#' ", "The class ", S3_name,
-    ifelse(S3_inherited_class == "",
+    ifelse(all(S3_inherited_class == ""),
       "",
       paste0(" is a subclass of ", S3_inherited_class, " and")
     ),
@@ -142,7 +142,7 @@ generate_S3functions <- function(S3_name,
   )
 
   # handle inherited classes
-  if (S3_inherited_class == "") {
+  if (all(S3_inherited_class == "")) {
     classes_collapse <- paste0("'", S3_name, "'")
   } else {
     S3_inherited_class_tidy <- gsub(" ", "", S3_inherited_class)
