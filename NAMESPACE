@@ -3,4 +3,5 @@
 export(find_function)
 export(new_S3)
 export(new_S3generic)
+export(new_S3method)
 importFrom(usethis,use_r)
