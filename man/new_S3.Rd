@@ -15,11 +15,12 @@ new_S3(
 \arguments{
 \item{S3_name}{The name of the class to be created}
 
-\item{...}{Any attributes of the new class. Enter in the form of 'name =
-default_value' (without quotations). These will be added to the constructor
-and helper functions as arguments and to the call to structure() as
-attribute. Remove arguments from the helper function that are not entered
-by the user, but created within the helper function.}
+\item{...}{The base object and any attributes of the new class. The first
+entry is the base object. Enter in the form of 'name = default_value'
+(without quotations). These will be added to the constructor and helper
+functions as arguments and to the call to structure(). H as attribute.
+Remove arguments from the helper function that are not entered by the user,
+but created within the helper function.}
 
 \item{S3_inherited_class}{All parent classes of the new class. Enter in the
 form of 'parent_class, grandparent_class'}
