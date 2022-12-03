@@ -4,20 +4,34 @@
 \alias{new_S3}
 \title{Create a new S3 class}
 \usage{
-new_S3(name = NULL, ..., inherited_class = "")
+new_S3(
+  S3_name = NULL,
+  ...,
+  S3_inherited_class = "",
+  S3_output = "clipboard",
+  S3_overwrite = FALSE
+)
 }
 \arguments{
-\item{name}{The name of the class to be created}
+\item{S3_name}{The name of the class to be created}
 
-\item{...}{Any attributes of the new class. Enter in the form of 'name = default_value'
-(without quotations). These will be added to the constructor and helper functions as arguments and
-to the call to structure() as attribute. Remove arguments from the helper function that are not
-entered by the user, but created within the helper function.}
+\item{...}{Any attributes of the new class. Enter in the form of 'name =
+default_value' (without quotations). These will be added to the constructor
+and helper functions as arguments and to the call to structure() as
+attribute. Remove arguments from the helper function that are not entered
+by the user, but created within the helper function.}
 
-\item{inherited_class}{All parent classes of the new class. Enter in the form of 'parent_class, grandparent_class'}
+\item{S3_inherited_class}{All parent classes of the new class. Enter in the
+form of 'parent_class, grandparent_class'}
+
+\item{S3_output}{Control the output of the function: Either 'clipboard' or
+'file' or 'console'. Default 'clipboard'}
+
+\item{S3_overwrite}{Control whether to overwrite an existing file. Default
+FALSE.}
 }
 \description{
-This function adds a new S3 class in a new file to the R/ directory of your package project
-and sets up the general structure following the workflow described in
-Advaced R 2 by Hadley Wickham.
+This function adds a new S3 class in a new file to the R/ directory of your
+package project and sets up the general structure following the workflow
+described in Advaced R 2 by Hadley Wickham.
 }
