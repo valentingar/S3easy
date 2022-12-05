@@ -6,7 +6,7 @@
 #' @param S3_generic A generic function. Enter as a call to that function,
 #' @param S3_name The name of the class for which this method is written
 #'   without parantheses: S3_generic = myfun
-#' @inheritParams new_S3
+#' @inheritParams new_S3class
 #'
 #' @export
 

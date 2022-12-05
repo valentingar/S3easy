@@ -3,7 +3,7 @@
 #'These functions help finding the class and function definitions for S3 classes
 #'in the active project.
 #'
-#'@inheritParams new_S3
+#'@inheritParams new_S3class
 #'
 #'
 #'@export
