@@ -22,7 +22,7 @@
 #'
 #' @export
 
-new_S3 <- function(S3_name = NULL,
+new_S3class <- function(S3_name = NULL,
                    ...,
                    S3_inherited_class = "",
                    S3_output = "clipboard",

@@ -4,7 +4,7 @@
 #'
 #' @param name The name of the new generic
 #' @param ... The input parameters of the new generic.
-#' @inheritParams new_S3
+#' @inheritParams new_S3class
 #'
 #' @export
 
