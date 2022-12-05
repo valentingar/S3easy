@@ -8,9 +8,9 @@
 #'
 #'@export
 
-find_S3class <- function(S3_name){
+find_function <- function(S3_name){
   search_pattern <- paste0("( *", S3_name," *\\<\\-)")
-  files_with_function_definition <- grepl_files(search_pattern, proj_path("/R"), perl = TRUE)
+  files_with_function_definition <- grepl_files(search_pattern, usethis::proj_path("/R"), perl = TRUE)
 }
 
 

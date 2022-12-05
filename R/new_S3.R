@@ -47,34 +47,14 @@ new_S3 <- function(S3_name = NULL,
     S3_inherited_class
   )
 
-  output_file_text <- styler::style_text(paste0(c(header_text, functions_text), collapse = ""))
-  functions_text <- styler::style_text(functions_text)
 
-  if (S3_output == "file") {
-    # check for existing file at file path
-    file_path <- paste0(usethis::proj_path("R", S3_name), ".R")
-    if (file.exists(file_path) & !S3_overwrite){
-      stop("There already exists a file at ", file_path, " and S3_overwrite is FALSE")
-    }
-
-    # check for existing function definition
-    files_with_function_definition <- find_S3class(S3_name)
-    if (length(files_with_function_definition) > 0 && !all(files_with_function_definition == file_path)){
-      message("class already defined? At:\n", files_with_function_definition)
-      continue_user_input <- readline("continue anyway? (y/N)")
-      if (!(continue_user_input == "y")){
-        return(invisible(functions_text))
-      }
-    }
-
-    writeLines(output_file_text, file_path)
-    usethis::edit_file(file_path)
-  } else if (S3_output == "clipboard") {
-    clipr::write_clip(functions_text)
+  control_output(S3_name,
+                 S3_output,
+                 S3_overwrite,
+                 S3_add_method = FALSE,
+                 functions_text,
+                 header_text)
   }
-
-  invisible(functions_text)
-}
 
 
 ### HELPER FUNCTIONS -----------------
@@ -83,7 +63,7 @@ new_S3 <- function(S3_name = NULL,
 generate_S3header <- function(S3_name,
                               class_arguments_name,
                               S3_inherited_class) {
-  arguments_text <- paste0(paste0("#' @param ", class_arguments_name), collapse = "\n")
+  arguments_text <- generate_arguments_header(class_arguments_name)
 
   header_text <- paste0(
     "#' ", S3_name, "\n#'\n",
