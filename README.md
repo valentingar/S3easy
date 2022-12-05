@@ -9,15 +9,21 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/S3easy)](https://CRAN.R-project.org/package=S3easy)
+
 <!-- badges: end -->
 
 S3 easy is a development tool that helps you adding new S3 classes,
 generics and methods easily and consistently in the style of
 [usethis](https://usethis.r-lib.org/index.html). It consists of three
-functions: - **new_S3class()** helps creating constructor, helper and
-validator functions in one go. - **new_S3generic()** helps creating new
-S3 generic functions. - **new_S3method()** helps creating a new S3
-method for an *existing generic*.
+functions:
+
+- **new_S3class()** helps creating constructor, helper and validator
+  functions in one go.
+
+- **new_S3generic()** helps creating new S3 generic functions.
+
+- **new_S3method()** helps creating a new S3 method for an *existing
+  generic*.
 
 The package tries to enforce the suggestions for good S3 practice from
 the respective chapter in Hadley Wickham’s [*Advanced

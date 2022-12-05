@@ -1,5 +1,8 @@
 ---
 output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -17,25 +20,37 @@ knitr::opts_chunk$set(
 # S3easy
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/S3easy)](https://CRAN.R-project.org/package=S3easy)
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/S3easy)](https://CRAN.R-project.org/package=S3easy)
+
 <!-- badges: end -->
 
-S3 easy is a development tool that helps you adding new S3 classes, generics and
-methods easily and consistently in the style of [usethis](https://usethis.r-lib.org/index.html). It consists of three functions:
-- **new_S3class()** helps creating constructor, helper and validator functions in one go.
-- **new_S3generic()** helps creating new S3 generic functions.
-- **new_S3method()** helps creating a new S3 method for an *existing generic*.
+S3 easy is a development tool that helps you adding new S3 classes,
+generics and methods easily and consistently in the style of
+[usethis](https://usethis.r-lib.org/index.html). It consists of three
+functions:
 
-The package tries to enforce the suggestions for good S3 practice from the 
-respective chapter in Hadley Wickham's [*Advanced R*](https://adv-r.hadley.nz/index.html).
-However, the intention is not to provide *working code*, but the necessary skeleton.
-Output will still have to be validated and edited by the user.
+-    **new_S3class()** helps creating constructor, helper and validator
+    functions in one go.
 
-All functions support both clipboard and file output. File output ensures that 
-no code is overwritten (without the consent of the user) and that no inconsistencies
-arise (multiple function definitions in one package).´
+-   **new_S3generic()** helps creating new S3 generic functions.
 
+-   **new_S3method()** helps creating a new S3 method for an *existing
+    generic*.
+
+The package tries to enforce the suggestions for good S3 practice from
+the respective chapter in Hadley Wickham's [*Advanced
+R*](https://adv-r.hadley.nz/index.html). However, the intention is not
+to provide *working code*, but the necessary skeleton. Output will still
+have to be validated and edited by the user.
+
+All functions support both clipboard and file output. File output
+ensures that no code is overwritten (without the consent of the user)
+and that no inconsistencies arise (multiple function definitions in one
+package).´
 
 ## Installation
 
@@ -48,9 +63,17 @@ devtools::install_github("valentingar/S3easy")
 ## Usage
 
 ### Create a new class
-Create a new class with `new_S3class()`. You must provide a name (`test_class`) and 
-at least a base object (`my_base_object`). Both the attributes and the base object of your new class are entered in the `...` argument of `new_S3class()`. The first entry is interpreted as the base object. You can add default values with `attribute = default_value`.
-Even dots (`...`) are supported for the helper function. You can add inherited classes as a character, however S3easy will not check that this is actually correct! Finally, control the output with `S3_output`
+
+Create a new class with `new_S3class()`. You must provide a name
+(`test_class`) and at least a base object (`my_base_object`). Both the
+attributes and the base object of your new class are entered in the
+`...` argument of `new_S3class()`. The first entry is interpreted as the
+base object. You can add default values with
+`attribute = default_value`. Even dots (`...`) are supported for the
+helper function. You can add inherited classes as a character, however
+S3easy will not check that this is actually correct! Finally, control
+the output with `S3_output`
+
 ```{r, eval = FALSE}
 library(S3easy)
 
@@ -66,7 +89,8 @@ new_S3class("test_class",
 
 ```
 
-The result will be a new file at ("R/test_class.R") with the following content:
+The result will be a new file at ("R/test_class.R") with the following
+content:
 
 ```{r, eval = FALSE}
 #' test_class
@@ -124,7 +148,8 @@ validate_test_class <- function(x) {
 
 ```
 
-You can also get the same output (without the Roxygen Header) to the clipboard:
+You can also get the same output (without the Roxygen Header) to the
+clipboard:
 
 ```{r, eval = FALSE}
 library(S3easy)
@@ -143,8 +168,9 @@ new_S3class("test_class",
 
 ### Add a new generic
 
-To add a new generic, simply run `new_S3generic()`. Again, the arguments of the 
-function can be controlled by adding them to the `...`, including optional default values.
+To add a new generic, simply run `new_S3generic()`. Again, the arguments
+of the function can be controlled by adding them to the `...`, including
+optional default values.
 
 ```{r}
 new_S3generic("test_fun",
@@ -157,6 +183,7 @@ new_S3generic("test_fun",
 ```
 
 Here, a new file is created at "R/test_fun.R" that looks like this:
+
 ```{r}
 #' test_fun
 #'
@@ -178,9 +205,13 @@ test_fun <- function(base_argument,
 ```
 
 ### Add methods to generics
-Adding methods is a bit different, as it requires input of an actual, working S3 generic. 
-This ensures, that all methods have at least the same arguments as the generic.
-You can add methods by running `new_S3method()`. If we want to use the previously generated generic, we will have to load it first:
+
+Adding methods is a bit different, as it requires input of an actual,
+working S3 generic. This ensures, that all methods have at least the
+same arguments as the generic. You can add methods by running
+`new_S3method()`. If we want to use the previously generated generic, we
+will have to load it first:
+
 ```{r}
 devtools::load_all()
 
@@ -190,6 +221,7 @@ new_S3method(test_fun, # the generic function
 ```
 
 In this case, the following code will be added to end of "R/test_fun.R"
+
 ```{r}
 
 #' @exportS3Method
@@ -200,8 +232,9 @@ test_fun.test_class <- function(base_argument,
 }
 ```
 
-If we add methods to generics that are not defined in the package, a new file will be
-generated. 
+If we add methods to generics that are not defined in the package, a new
+file will be generated.
+
 ```{r}
 
 new_S3method(print, # the generic function
@@ -210,6 +243,7 @@ new_S3method(print, # the generic function
 ```
 
 will create a new file at "R/print.R" with the following content:
+
 ```{r}
 #' print
 #'
@@ -226,7 +260,3 @@ print.test_class <- function(x,
 }
 
 ```
-
-
-
-
