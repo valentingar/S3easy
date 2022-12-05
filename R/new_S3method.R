@@ -17,6 +17,7 @@ new_S3method <- function(S3_name,
 ){
   stopifnot("Please provide an actual function to S3_generic: S3_generic = my_fun"
             = is.function(S3_generic))
+  stopifnot("S3_generic is no S3 generic function!" = utils::isS3stdGeneric(S3_generic))
   arguments <- formals(S3_generic)
   arguments_name <- names(arguments)
 
