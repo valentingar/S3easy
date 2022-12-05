@@ -50,7 +50,9 @@ have to be validated and edited by the user.
 All functions support both clipboard and file output. File output
 ensures that no code is overwritten (without the consent of the user)
 and that no inconsistencies arise (multiple function definitions in one
-package).´
+package).
+
+*This package is experimental and not yet well tested. Use carefully. Feedback very welcome!*
 
 ## Installation
 
