@@ -51,6 +51,7 @@ new_S3 <- function(S3_name = NULL,
   control_output(S3_name,
                  S3_output,
                  S3_overwrite,
+                 S3_add_method = FALSE,
                  functions_text,
                  header_text)
   }

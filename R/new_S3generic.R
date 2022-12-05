@@ -35,6 +35,7 @@ new_S3generic <- function(name,
   control_output(name,
                  S3_output,
                  S3_overwrite,
+                 S3_add_method = FALSE,
                  functions_text,
                  header_text)
 }

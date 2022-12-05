@@ -4,24 +4,16 @@
 \alias{new_S3method}
 \title{Define new S3 methods}
 \usage{
-new_S3method(
-  S3_name,
-  S3_generic,
-  S3_output = "clipboard",
-  S3_overwrite = FALSE
-)
+new_S3method(S3_generic, S3_name, S3_output = "clipboard")
 }
 \arguments{
-\item{S3_name}{The name of the class for which this method is written}
+\item{S3_generic}{A generic function. Enter as a call to that function,}
 
-\item{S3_generic}{A generic function. Enter as a call to that function,
+\item{S3_name}{The name of the class for which this method is written
 without parantheses: S3_generic = myfun}
 
 \item{S3_output}{Control the output of the function: Either 'clipboard' or
 'file' or 'console'. Default 'clipboard'}
-
-\item{S3_overwrite}{Control whether to overwrite an existing file. Default
-FALSE.}
 }
 \description{
 This function helps you to generate new methods for existing generics. It
