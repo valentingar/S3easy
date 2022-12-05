@@ -45,7 +45,7 @@ You can install the development version of S3easy like so:
 devtools::install_github("valentingar/S3easy")
 ```
 
-## Useage
+## Usage
 
 ### Create a new class
 Create a new class with `new_S3class()`. You must provide a name (`test_class`) and 
